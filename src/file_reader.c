@@ -60,6 +60,7 @@ int fr_contents_len(FileReader *fr)
   return fr->_sb->pos + 2;
 }
 
-void fr_getcontents(char *)
+void fr_contents(FileReader *fr, char *dest)
 {
+  sb_tostring(dest, fr->_sb);
 }

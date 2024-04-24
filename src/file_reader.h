@@ -19,3 +19,4 @@ FileReaderResultCode fr_readfile(char *filename, FileReader *reader);
 void fr_free(FileReader *reader);
 void fr_printerr(FileReaderResultCode code);
 int fr_contents_len(FileReader *fr);
+void fr_contents(FileReader *fr, char *dest);
