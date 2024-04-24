@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "file_reader.h": "c",
+    "sb.h": "c",
+    "stdio.h": "c",
+    "stdlib.h": "c"
+  }
+}
