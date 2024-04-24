@@ -1,6 +1,14 @@
-stringb: mem.c sb.c file_reader.c stringb.c
-	mkdir -p out
-	cc mem.c sb.c file_reader.c stringb.c -o out/stringb
 
-run: stringb
-	./out/stringb js.lisp
+
+SRCDIR := src
+SRCFILES := $(addprefix $(SRCDIR)/,mem.c sb.c file_reader.c main.c)
+
+icancit: $(SRCFILES)
+	mkdir -p out
+	cc $(SRCFILES) -o out/icancit
+
+run: icancit
+	./out/icancit js.lisp
+
+mem: icancit
+	valgrind --track-origins=yes out/icancit
