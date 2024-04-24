@@ -1,5 +1,3 @@
-
-
 SRCDIR := src
 SRCFILES := $(addprefix $(SRCDIR)/,mem.c sb.c file_reader.c main.c)
 
