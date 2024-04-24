@@ -1,0 +1,39 @@
+# A toy renaming language
+
+# (list $1) -> Sets the variable name for the list to $1
+# (target $1) -> Sets the variable name for the target to $1
+# (returning $1) -> sets the variable name for the final result to $1
+
+# (var $1 $2 $3) -> Binds a variable named $1 to the value set by
+#                    the expression $2, for the scope of the 
+#                    expression $3
+
+# (case [...$1 $2]) -> Executes the expression $2 if the expression $1
+#                      resolves to true. Can have many cases
+
+# (and $1 ... $n $2) -> Executes the expression $2 if $1..$n all 
+#                       resolve to true
+
+# (^ $1 $2) -> Resolves to true if $2 is a string that starts with $1
+# ($ $1 $2) -> Resolves to true if $2 is a string that ends with $1
+# (^? $1 $2) -> Returns the first index (zero-based) of the string $1 in the string $2
+# ($? $1 $2) -> Returns the last index (zero-based) of the string $1 in the string $2
+# (+ $1 $2) -> Returns the concatenation of $1 to $2
+# (r $1 $2 $3) -> Replaces all occurrences of $1 with $2 in the string $3
+# (^r $1 $2 $3) -> Replaces the first occurrence of $1 with $2 in the string $3
+# ($r $1 $2 $3) -> Replaces the last occurrence of $1 with $2 in the string $3
+# (- $1 $2) -> Removes all occurrences of $1 in the string $2
+# (^- $1 $2) -> Removes the first occurrence of $1 in the string $2
+# ($- $1 $2) -> Removes the last occurrence of $1 in the string $2
+
+(list l)
+(target t)
+(returning result)
+
+(with c (# t ))
+
+(case 
+  (and 
+      (^ "file_" x.name) 
+      (= "c" x.ext)))
+  (result =)

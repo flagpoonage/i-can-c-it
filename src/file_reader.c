@@ -5,62 +5,62 @@
 
 static FileReaderResultCode readfile_tosb(char *filename, StringBuilder *sb)
 {
-  char c;
-  char bytes[128];
-  FILE *file;
+    char c;
+    char bytes[128];
+    FILE *file;
 
-  // Clean any data
-  sb_clear(sb);
+    // Clean any data
+    sb_clear(sb);
 
-  file = fopen(filename, "r");
+    file = fopen(filename, "r");
 
-  if (file == NULL)
-  {
-    return OpenFileFailed;
-  }
+    if (file == NULL)
+    {
+        return FileReadOpenFileFailed;
+    }
 
-  while ((c = fgetc(file)) != EOF)
-  {
-    sb_push(sb, c);
-  }
+    while ((c = fgetc(file)) != EOF)
+    {
+        sb_push(sb, c);
+    }
 
-  if (fclose(file) == EOF)
-  {
-    printf("Failed to close file");
-    return CloseFileFailed;
-  }
+    if (fclose(file) == EOF)
+    {
+        printf("Failed to close file");
+        return FileReadCloseFileFailed;
+    }
 
-  return Normal;
+    return FileReadNormal;
 }
 
 FileReaderResultCode fr_readfile(char *filename, FileReader *reader)
 {
-  reader->filename = strdup(filename);
-  reader->code = readfile_tosb(filename, reader->_sb);
-  return reader->code;
+    reader->filename = strdup(filename);
+    reader->code = readfile_tosb(filename, reader->_sb);
+    return reader->code;
 }
 
 void fr_free(FileReader *reader)
 {
-  sb_free(reader->_sb);
-  free(reader->filename);
-  free(reader);
+    sb_free(reader->_sb);
+    free(reader->filename);
+    free(reader);
 }
 
 FileReader *fr_init()
 {
-  FileReader *fr = must_malloc(sizeof(FileReader));
-  StringBuilder *sb;
-  fr->_sb = sb_init(1024, BUFFER_EXPAND_DOUBLE);
-  return fr;
+    FileReader *fr = must_malloc(sizeof(FileReader));
+    StringBuilder *sb;
+    fr->_sb = sb_init(1024, BUFFER_EXPAND_DOUBLE);
+    return fr;
 }
 
 int fr_contents_len(FileReader *fr)
 {
-  return fr->_sb->pos + 2;
+    return fr->_sb->pos + 2;
 }
 
 void fr_contents(FileReader *fr, char *dest)
 {
-  sb_tostring(dest, fr->_sb);
+    sb_tostring(dest, fr->_sb);
 }

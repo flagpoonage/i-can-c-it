@@ -2,16 +2,16 @@
 
 typedef enum FileReaderResultCode
 {
-  Normal,
-  OpenFileFailed,
-  CloseFileFailed
+    FileReadNormal,
+    FileReadOpenFileFailed,
+    FileReadCloseFileFailed
 } FileReaderResultCode;
 
 typedef struct FileReader
 {
-  char *filename;
-  StringBuilder *_sb;
-  FileReaderResultCode code;
+    char *filename;
+    StringBuilder *_sb;
+    FileReaderResultCode code;
 } FileReader;
 
 FileReader *fr_init();

@@ -4,5 +4,11 @@
     "sb.h": "c",
     "stdio.h": "c",
     "stdlib.h": "c"
+  },
+  "[c]": {
+    "editor.defaultFormatter": "chiehyu.vscode-astyle",
+    "editor.wordBasedSuggestions": "off",
+    "editor.suggest.insertMode": "replace",
+    "editor.semanticHighlighting.enabled": true
   }
 }

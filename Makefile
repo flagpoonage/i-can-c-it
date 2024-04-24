@@ -8,7 +8,7 @@ out/icancit: $(SRCFILES)
 .PHONY: run mem
 
 run: out/icancit
-	./out/icancit js.lisp
+	./out/icancit testfiles/js.lisp
 
 mem: out/icancit
-	valgrind --track-origins=yes out/icancit js.lisp
+	valgrind --track-origins=yes out/icancit testfiles/js.lisp
