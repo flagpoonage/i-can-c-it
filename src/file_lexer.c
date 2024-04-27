@@ -153,18 +153,10 @@ Lexer *lex_file (char *filename, Lexer *lexer)
             continue;
         }
 
-        if (!is_number) {
-            if (token_type == TokenTypeNumeric || token_type == TokenTypeNone) {
-                // This is either a new token, or we're reading a numeric token
-                // in which case it has non numeric digits, so we convert it to
-                // an identifier.
-                token_type = TokenTypeIdentifier;
-            }
-        }
-        else if (token_type == TokenTypeNone) {
-            // We're starting a new token, and it starts with a number so we'll
-            // initially set it as a numeric token.
-            token_type = TokenTypeNumeric;
+        if (!is_reading_token) {
+            // This is a new token, either a number or an identifier, all other
+            // cases have been accounted for earlier.
+            token_type = is_number ? TokenTypeNumeric : TokenTypeIdentifier;
         }
     }
 
