@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "file_reader.h"
+#include "file_lexer.h"
 
 int main(int argc, char *argv[])
 {
@@ -11,24 +11,12 @@ int main(int argc, char *argv[])
     }
 
     char *fname = argv[1];
-    FileReader *fr = fr_init();
-    FileReaderResultCode read_result = fr_readfile(fname, fr);
+    Lexer *lex = lex_file_alloc(fname);
 
-    if (read_result == FileReadOpenFileFailed)
-    {
-        printf("Failed to read file %s", fname);
-        fr_free(fr);
-        exit(1);
-    }
-    else if (read_result == FileReadCloseFileFailed)
-    {
-        printf("Error closing file [%s], although it's probably still closed", fname);
+    int i;
+    for(i = 0; i < lex->token_count; i++) {
+        printf("Lexed[%d]: [T%d] %s\n", i, lex->tokens[i].type, lex->tokens[i].string);
     }
 
-    char contents[fr_contents_len(fr)];
-    fr_contents(fr, contents);
-
-    printf("%d bytes at: %s\n\n%s\n", fr_contents_len(fr), fr->filename, contents);
-
-    fr_free(fr);
+    lex_free(lex);
 }

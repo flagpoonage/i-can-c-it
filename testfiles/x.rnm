@@ -15,16 +15,50 @@
 #                       resolve to true
 
 # (^ $1 $2) -> Resolves to true if $2 is a string that starts with $1
+# - (starts-with $1 $2)
+
 # ($ $1 $2) -> Resolves to true if $2 is a string that ends with $1
+# - (ends-with $1 $2)
+
 # (^? $1 $2) -> Returns the first index (zero-based) of the string $1 in the string $2
+# - (first-index $1 $2)
+
 # ($? $1 $2) -> Returns the last index (zero-based) of the string $1 in the string $2
+# - (last-index $1 $2)
+
 # (+ $1 $2) -> Returns the concatenation of $1 to $2
+# - (concat $1 $2)
+
 # (r $1 $2 $3) -> Replaces all occurrences of $1 with $2 in the string $3
+# - (replace-all $1 $2 $3)
+
 # (^r $1 $2 $3) -> Replaces the first occurrence of $1 with $2 in the string $3
+# - (replace-first $1 $2 $3)
+
 # ($r $1 $2 $3) -> Replaces the last occurrence of $1 with $2 in the string $3
+# - (replace-last $1 $2 $3)
+
 # (- $1 $2) -> Removes all occurrences of $1 in the string $2
+# - (remove-all $1 $2)
+
 # (^- $1 $2) -> Removes the first occurrence of $1 in the string $2
+# - (remove-first $1 $2)
+
 # ($- $1 $2) -> Removes the last occurrence of $1 in the string $2
+# - (remove-last $1 $2)
+
+# (# $1 $2 $3) -> Returns a slice starting at index $1, and of length $2 from within $3
+# - (slice $1 $2 $3)
+
+# (^# $1 $2) -> Returns a slice from the index 0 to index $1 of the string $2
+# - (slice-start $1 $2)
+
+# ($# $1 $2) -> Returns a slice from the end of the string to the index $1 of the string $2
+# - (slice-end $1 $2)
+
+# (len $1) -> Returns the length of te string $1
+# (chr $1 $2) -> Returns the character at index $1 of the string $2
+
 
 (list l)
 (target t)

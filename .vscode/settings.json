@@ -3,7 +3,10 @@
     "file_reader.h": "c",
     "sb.h": "c",
     "stdio.h": "c",
-    "stdlib.h": "c"
+    "stdlib.h": "c",
+    "string.h": "c",
+    "string": "c",
+    "file_lexer.h": "c"
   },
   "[c]": {
     "editor.defaultFormatter": "chiehyu.vscode-astyle",

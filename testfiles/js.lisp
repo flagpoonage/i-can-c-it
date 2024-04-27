@@ -1,11 +1,14 @@
-(module js)
-(import 
-  ("other" setter) 
-  ("types" custom))
 
-(type Narrow (
-  str custom
-  val string
-  status number))
+(list l)
+(target t)
+(returning result)
 
-(inline fs)
+(with c (# t ))
+
+(+ 1.0 3.553)
+
+(case 
+  (and 
+      (^# "file() and something" x.name) 
+      (= "c" x.ext)))
+  (result =)
