@@ -79,6 +79,8 @@ Lexer *lex_file (char *filename, Lexer *lexer)
 
     int token_pos = 0;
 
+    int is_escape_sequence = 0;
+
     while (source_pos < len) {
         char next_char = source[source_pos++];
 
@@ -95,7 +97,7 @@ Lexer *lex_file (char *filename, Lexer *lexer)
             // we're given, unless it's a string delimiter.
             // TODO: Handle string delimiter escaping like \"
 
-            if (is_string_delim) {
+            if (is_string_delim && !is_escape_sequence) {
                 // We've reached the end of the string,
                 FINALIZE_TOKEN(
                     sb, buffer_pos, strptr, tokens, token_pos, next_char, token_type);
@@ -103,6 +105,13 @@ Lexer *lex_file (char *filename, Lexer *lexer)
             else {
                 // The strings not finished, so just add another character
                 sb[buffer_pos++] = next_char;
+            }
+
+            if (!is_escape_sequence && next_char == '\\') {
+                is_escape_sequence = 1;
+            }
+            else {
+                is_escape_sequence = 0;
             }
 
             continue;

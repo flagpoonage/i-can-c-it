@@ -1,7 +1,5 @@
 
-(list l)
-(target t)
-(returning result)
+(: list l target t index i)
 
 (with c (# t ))
 
@@ -9,6 +7,6 @@
 
 (case 
   (and 
-      (^# "file() and something" x.name) 
+      (^# "file() and so\\"mething" x.name) 
       (= "c" x.ext)))
   (result =)
