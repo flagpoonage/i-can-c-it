@@ -1,6 +1,6 @@
 SRCDIR := src
 SHELL := /usr/bin/fish
-SRCFILES := $(addprefix $(SRCDIR)/,mem.c sb.c file_lexer.c file_reader.c main.c)
+SRCFILES := $(addprefix $(SRCDIR)/,mem.c sb.c file_lexer.c file_parser.c file_reader.c main.c)
 
 out/icancit: $(SRCFILES)
 	mkdir -p out

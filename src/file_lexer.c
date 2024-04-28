@@ -48,6 +48,11 @@ static Lexer *init(char *filename) {
     Lexer *lexer = must_calloc(1, sizeof(Lexer));
     lexer->_fr = fr;
     lexer->token_count = 0;
+
+    // We allocate double the length of the string for our buffer. This means that
+    // even if every character is a single character token, we still have enough room
+    // to store every token string, and a null terminator after each one. This is the maximum
+    // theoretical size we need, and we won't need to do any more allocations.
     lexer->_string_buffer = must_calloc(1, fr_contents_len(fr) * 2);
     return lexer;
 }
@@ -73,7 +78,7 @@ Lexer *lex_file (char *filename, Lexer *lexer)
 
     // TODO: This should be dynamically allocated, 1000 tokens won't
     // last too longs
-    LexerToken *tokens = must_calloc(1000, sizeof(LexerToken));
+    LexerToken *tokens = must_calloc(50, sizeof(LexerToken));
 
     lexer->tokens = tokens;
 

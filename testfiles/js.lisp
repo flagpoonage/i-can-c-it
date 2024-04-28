@@ -7,6 +7,6 @@
 
 (case 
   (and 
-      (^# "file() and so\\"mething" x.name) 
+      (^# "file() and so\"mething" x.name) 
       (= "c" x.ext)))
   (result =)
